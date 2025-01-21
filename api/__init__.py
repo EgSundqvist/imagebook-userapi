@@ -9,7 +9,7 @@ def create_app():
     app.config.from_object(config)
 
     # Initiera CORS och tillåt specifika domäner
-    CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:8080", "http://localhost"]}})
+    CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:8080", "http://localhost", "https://eriksdemo@chickenkiller.com"]}})
 
     init_db(app)
 
