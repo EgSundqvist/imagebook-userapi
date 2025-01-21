@@ -18,6 +18,7 @@ class Config:
             self.IMAGEAPI_URL = os.getenv('IMAGEAPI_URL', env_config.get('IMAGEAPI_URL', ''))
 
             # Lägg till utskrifter för att se vilka värden som laddas
+            print(f"Environment: {env}")
             print(f"SQLALCHEMY_DATABASE_URI: {self.SQLALCHEMY_DATABASE_URI}")
             print(f"JWT_SECRET_KEY: {self.JWT_SECRET_KEY}")
             print(f"JWT_SECRET_KEY_BACKEND: {self.JWT_SECRET_KEY_BACKEND}")
@@ -25,4 +26,5 @@ class Config:
 
 # Välj miljö baserat på FLASK_ENV variabeln
 env = os.getenv('FLASK_ENV', 'Development')
+print(f"Starting application in {env} environment")
 config = Config(env)
