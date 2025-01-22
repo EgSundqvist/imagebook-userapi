@@ -11,11 +11,9 @@ def register_user_and_profile():
     email = data['email']
     username = data['username']
 
-    # Kontrollera om e-postadressen redan finns
     if UserRepository.get_user_by_email(email):
         return jsonify({'message': 'Email address already in use'}), 400
 
-    # Kontrollera om användarnamnet redan finns
     if ProfileRepository.get_profile_by_username(username):
         return jsonify({'message': 'Username already in use'}), 400
 

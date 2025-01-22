@@ -11,7 +11,6 @@ class RegisterRepository:
     @staticmethod
     def register_user_and_profile(first_name, last_name, email, password, username, bio, avatar):
         try:
-            # Starta en databastransaktion
             new_user = User(
                 first_name=first_name,
                 last_name=last_name,
@@ -19,7 +18,7 @@ class RegisterRepository:
             )
             new_user.set_password(password)
             db.session.add(new_user)
-            db.session.flush()  # Flush för att få new_user.id innan commit
+            db.session.flush()
 
             new_profile = Profile(
                 user_id=new_user.id,
@@ -38,7 +37,6 @@ class RegisterRepository:
                 logger.error(f'[DB] Failed to create S3 folder: {str(e)}')
                 raise Exception(f'Failed to create S3 folder: {str(e)}')
 
-            # Commit transaktionen
             db.session.commit()
             logger.info(f'[DB] User and profile registered: user_id={new_user.id}, profile_id={new_profile.id}')
 

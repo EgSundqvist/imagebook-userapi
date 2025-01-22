@@ -8,12 +8,10 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
 
-    # Initiera CORS och tillåt specifika domäner
     CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:8080", "http://localhost", "https://imageapi.spacetechnology.net", "https://imagebook.spacetechnology.net"]}})
 
     init_db(app)
 
-    # Initiera JWT
     jwt = JWTManager(app)
 
     from api.user_api import user_bp
