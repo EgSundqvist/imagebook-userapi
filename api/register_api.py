@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from repositories.user_repository import UserRepository
 from repositories.profile_repository import ProfileRepository
 from repositories.register_repository import RegisterRepository
@@ -10,6 +10,9 @@ def register_user_and_profile():
     data = request.get_json()
     email = data['email']
     username = data['username']
+
+    if email not in current_app.config['ALLOWED_EMAILS']:
+        return jsonify({'message': 'Email address not allowed'}), 403
 
     if UserRepository.get_user_by_email(email):
         return jsonify({'message': 'Email address already in use'}), 400
