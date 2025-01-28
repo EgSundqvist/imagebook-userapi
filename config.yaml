@@ -3,6 +3,7 @@ Development:
   JWT_SECRET_KEY_FRONTEND: ""
   JWT_SECRET_KEY_BACKEND: ""
   IMAGEAPI_URL: ""
+  CLIENT_URL: ""
   ALLOWED_EMAILS: ""
 
 Production:
@@ -10,4 +11,5 @@ Production:
   JWT_SECRET_KEY_FRONTEND: ""
   JWT_SECRET_KEY_BACKEND: ""
   IMAGEAPI_URL: ""
+  CLIENT_URL: ""
   ALLOWED_EMAILS: ""

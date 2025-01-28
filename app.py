@@ -1,10 +1,9 @@
 from api import create_app
-from flask_migrate import Migrate, upgrade
+from flask_migrate import Migrate
 from db import db
 from logging_config import setup_logging
 import os
 
-# Konfigurera loggning
 setup_logging()
 
 

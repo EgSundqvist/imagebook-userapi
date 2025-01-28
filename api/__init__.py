@@ -8,7 +8,9 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
 
-    CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:8080", "http://localhost", "https://imageapi.spacetechnology.net", "https://imagebook.spacetechnology.net"]}})
+    allowed_origins = [config.IMAGEAPI_URL, config.CLIENT_URL]
+
+    CORS(app, resources={r"/*": {"origins": allowed_origins}})
 
     init_db(app)
 
